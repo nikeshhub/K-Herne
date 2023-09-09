@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Badge } from "antd";
+import { Card } from "antd";
 import { Splide, SplideSlide } from "@splidejs/react-splide"; // Import Splide components
 import axios from "axios";
 import "@splidejs/react-splide/css/skyblue";
@@ -21,7 +21,7 @@ const PopularHome = () => {
       console.error("Error fetching data:", error);
     }
   };
-  
+
   useEffect(() => {
     getMovies();
   }, []);
@@ -58,7 +58,6 @@ const PopularHome = () => {
       >
         {popular.map((value) => (
           <SplideSlide key={value.id}>
-            {/* <Badge.Ribbon text={value.original_language} color="red"> */}
             <Card
               style={{
                 width: 280,
@@ -95,7 +94,6 @@ const PopularHome = () => {
                 {value.vote_average}
               </div>
             </Card>
-            {/* </Badge.Ribbon> */}
           </SplideSlide>
         ))}
       </Splide>
