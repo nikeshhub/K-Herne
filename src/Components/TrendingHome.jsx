@@ -29,13 +29,14 @@ const TrendingHome = () => {
       <h1>Trending movies</h1>
       <Splide
         options={{
-          perPage: 5, // Number of slides per page
+          perPage: 4, // Number of slides per page
           breakpoints: {
             1024: { perPage: 2 }, // Adjust perPage for tablet
             464: { perPage: 1 }, // Adjust perPage for mobile
           },
           gap: "20px", // Gap between slides
           rewind: true,
+          pagination: false,
           // Allow rewinding when reaching the end
         }}
         className="custom-splide"
@@ -45,7 +46,7 @@ const TrendingHome = () => {
             <Badge.Ribbon text={value.status} color="red">
               <Card
                 style={{
-                  width: 268,
+                  width: 330,
                 }}
                 cover={
                   <img
