@@ -31,7 +31,7 @@ const Movies = () => {
         <div key={i} className="movie-card">
           <Card
             hoverable
-            style={{ width: "330px" }}
+            style={{ width: "315px" }}
             cover={
               <img
                 alt={value.title}

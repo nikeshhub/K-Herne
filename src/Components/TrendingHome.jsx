@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Badge } from "antd";
+import { Card} from "antd";
 import { Splide, SplideSlide } from "@splidejs/react-splide"; // Import Splide components
 import axios from "axios";
 import "@splidejs/react-splide/css/skyblue";
@@ -25,7 +25,7 @@ const TrendingHome = () => {
   }, []);
 
   return (
-    <div style={{ padding: "50px" }}>
+    <div style={{ padding: "30px" }}>
       <h1>Trending movies</h1>
       <Splide
         options={{
@@ -43,10 +43,10 @@ const TrendingHome = () => {
       >
         {popular.map((value) => (
           <SplideSlide key={value.id}>
-            <Badge.Ribbon text={value.status} color="red">
+
               <Card
                 style={{
-                  width: 330,
+                  width: 315,
                 }}
                 cover={
                   <img
@@ -76,10 +76,10 @@ const TrendingHome = () => {
                     fontSize: "18px",
                   }}
                 >
-                  {value.vote_average}
+                  {value.vote_average.toFixed(1)}
                 </div>
               </Card>
-            </Badge.Ribbon>
+
           </SplideSlide>
         ))}
       </Splide>

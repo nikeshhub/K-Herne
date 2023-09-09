@@ -52,8 +52,8 @@ const PopularHome = () => {
           },
           gap: "20px", // Gap between slides
           rewind: true,
-          pagination:false,
-    
+          pagination: false,
+
           // Allow rewinding when reaching the end
         }}
         className="custom-splide"
@@ -62,7 +62,7 @@ const PopularHome = () => {
           <SplideSlide key={value.id}>
             <Card
               style={{
-                width: 330,
+                width: 315,
               }}
               cover={
                 <img
@@ -93,7 +93,7 @@ const PopularHome = () => {
                   fontSize: "18px",
                 }}
               >
-                {value.vote_average}
+                {value.vote_average.toFixed(1)}
               </div>
             </Card>
           </SplideSlide>
