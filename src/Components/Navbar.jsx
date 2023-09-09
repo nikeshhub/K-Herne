@@ -24,11 +24,6 @@ const Navbar = () => {
     setVisible(false);
   };
 
-  const onSearch = (value: string) => {
-    console.log("Search query:", value);
-    // Implement your search logic here
-  };
-
   return (
     <Layout className="layout">
       <Header style={{ padding: -1 }}>
@@ -70,7 +65,6 @@ const Navbar = () => {
               <Search
                 placeholder="Search..."
                 style={{ marginLeft: "20px", width: "300px" }}
-                onSearch={onSearch}
                 enterButton={<SearchOutlined />}
               />
               <Button style={{ color: "white" }} type="link">
@@ -97,7 +91,7 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
             </Menu.Item>
             <Menu.Item key="2" icon={<PlayCircleOutlined />}>
-             <NavLink to="/movies"> Movies </NavLink>
+              <NavLink to="/movies"> Movies </NavLink>
             </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}>
               <NavLink to="/tv-series">TV Series </NavLink>
