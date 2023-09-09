@@ -1,11 +1,50 @@
+/* Inside Movies.css */
 .movie-container {
-  padding: 20px;
   display: flex;
-  flex-wrap: wrap; /* Allow cards to wrap to the next line */
-  justify-content: flex-start; /* Adjust as needed to control alignment */
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.movie-card {
-  margin: 16px; /* Add margin between cards */
-  flex: 0 0 calc(20% - 32px); /* Adjust the width and margin as needed for 5 cards per row */
+/* Styles for movie cards in desktop layout */
+.desktop-layout {
+  padding: 30px;
+  flex-basis: calc(25% - 16px); /* Four cards per row with gap */
+  margin-bottom: 16px;
+}
+
+/* Styles for movie cards in mobile layout (if needed) */
+
+
+
+/* Mobile layout styles */
+@media (max-width: 767px) {
+  .movie-card {
+    flex-basis: 100%; 
+    margin: 10px;
+  }
+  .mobile-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #212422;
+    border-radius: 5%;
+    padding: 5px;
+
+    /* width: 315px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
+  }
+
+  .mobile-image {
+    flex: 1;
+    margin-right: 10px;
+  }
+  .mobile-image img {
+    max-width: 150px;
+    border-radius: 5%;
+  }
+  .mobile-info {
+    flex: 2;
+  }
 }
