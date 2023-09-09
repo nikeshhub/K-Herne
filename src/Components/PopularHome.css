@@ -1,0 +1,12 @@
+/* CSS */
+/* Customize arrow background color and arrow color */
+.custom-splide .splide__arrow {
+    background-color: white; /* Set the arrow background color */
+    color: black; /* Set the arrow color */
+  }
+  
+  /* Change the arrow color on hover */
+  .custom-splide .splide__arrow:hover {
+    color: red; /* Change the arrow color on hover */
+  }
+  

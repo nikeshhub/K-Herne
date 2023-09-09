@@ -8,6 +8,7 @@ import {
   MenuOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -33,17 +34,19 @@ const Navbar = () => {
       <Header style={{ padding: -1 }}>
         <Row justify="space-between">
           <Col xs={20} sm={20} md={4}>
-            <div
-              className="logo"
-              style={{
-                color: "white",
-                paddingLeft: "20px",
-                paddingTop: "10px",
-                maxWidth: "200px",
-              }}
-            >
-              <img src="./logo.png" width={140} alt="Logo" />
-            </div>
+            <NavLink to="/">
+              <div
+                className="logo"
+                style={{
+                  color: "white",
+                  paddingLeft: "20px",
+                  paddingTop: "10px",
+                  maxWidth: "200px",
+                }}
+              >
+                <img src="./logo.png" width={140} alt="Logo" />
+              </div>
+            </NavLink>
           </Col>
           <Col xs={0} sm={0} md={16}>
             <div style={{ display: "flex", alignItems: "center" }}>
@@ -54,13 +57,13 @@ const Navbar = () => {
                 style={{ flexGrow: 1 }}
               >
                 <Menu.Item key="1" icon={<HomeOutlined />}>
-                  Home
+                  <NavLink to="/">Home</NavLink>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<PlayCircleOutlined />}>
-                  Movies
+                  <NavLink to="/movies">Movies</NavLink>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<DesktopOutlined />}>
-                  TV Series
+                  <NavLink to="/tv-series">TV Series</NavLink>
                 </Menu.Item>
               </Menu>
               {/* Search input */}
@@ -70,7 +73,7 @@ const Navbar = () => {
                 onSearch={onSearch}
                 enterButton={<SearchOutlined />}
               />
-              <Button style={{color:"white"}} type="link">
+              <Button style={{ color: "white" }} type="link">
                 <UserOutlined />
               </Button>
             </div>
@@ -91,13 +94,13 @@ const Navbar = () => {
         >
           <Menu mode="vertical" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1" icon={<HomeOutlined />}>
-              Home
+              <NavLink to="/">Home</NavLink>
             </Menu.Item>
             <Menu.Item key="2" icon={<PlayCircleOutlined />}>
-              Movies
+             <NavLink to="/movies"> Movies </NavLink>
             </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}>
-              TV Series
+              <NavLink to="/tv-series">TV Series </NavLink>
             </Menu.Item>
           </Menu>
         </Drawer>

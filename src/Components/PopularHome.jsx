@@ -1,97 +1,104 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Badge } from "antd";
+import { Splide, SplideSlide } from "@splidejs/react-splide"; // Import Splide components
+import axios from "axios";
+import "@splidejs/react-splide/css/skyblue";
+import "./PopularHome.css";
+
 const { Meta } = Card;
 
 const PopularHome = () => {
-  const PopularHomeList = [
-    {
-      id: 1,
-      name: "Oppenhiemer",
-      picture:
-        "https://res.cloudinary.com/duaz5kg1m/image/upload/v1692626128/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY_._V1__qxw7g6.jpg",
-      releaseDate: "2023-07-03",
-      rating: 9.8,
-      status: "awardwinning",
-    },
-    {
-      id: 2,
-      name: "Barbie",
-      picture:
-        "https://res.cloudinary.com/duaz5kg1m/image/upload/v1692626127/iuFNMS8U5cb6xfzi51Dbkovj7vM_methaf.jpg",
-      releaseDate: "2023-07-03",
-      rating: 8,
-      status: "superhit",
-    },
-    {
-      id: 3,
-      name: "Project X",
-      picture:
-        "https://res.cloudinary.com/duaz5kg1m/image/upload/v1692628085/MV5BMTc1MTk0Njg4OF5BMl5BanBnXkFtZTcwODc0ODkyNw_._V1__v1gnhq.jpg",
-      releaseDate: "2023-07-03",
-      rating: 7.8,
-      status: "party",
-    },
-    {
-      id: 4,
-      name: "The Man Called OTTO",
-      picture:
-        "https://res.cloudinary.com/duaz5kg1m/image/upload/v1692628085/MV5BOTk4NjdiNzktM2FlNS00NmIwLWE0MWItNjc1MDY2Njg3YWYyXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1__aavdoo.jpg",
-      releaseDate: "2023-07-03",
-      rating: 9.5,
-      status: "newrelease",
-    },
-    {
-      id: 5,
-      name: "Interstellar",
-      picture:
-        "https://res.cloudinary.com/duaz5kg1m/image/upload/v1692628084/71LNVGVpWYL._AC_UF894_1000_QL80__ffrmpt.jpg",
-      releaseDate: "2023-07-03",
-      rating: 9,
-      status: "hot",
-    },
-    // ... other data objects ...
-  ];
+  const [popular, setPopular] = useState([]);
+
+  const getMovies = async () => {
+    try {
+      const response = await axios({
+        url: "https://api.themoviedb.org/3/movie/popular?api_key=7075fe97f28375fc950eee9bfe2a0364",
+        method: "GET",
+      });
+      setPopular(response.data.results);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  // useEffect(() => {
+  //   const apiUrl =
+  //     "https://api.themoviedb.org/3/movie/popular?api_key=7075fe97f28375fc950eee9bfe2a0364";
+
+  //   axios
+  //     .get(apiUrl)
+  //     .then((response) => {
+  //       setPopular(response.data.results);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //     });
+  // }, []);
 
   return (
-    <div style={{ padding: "50px" }}>
-      <h1>Trending movies</h1>
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        {PopularHomeList.map((value) => (
-          <Badge.Ribbon text={value.status} color="magenta" >
+    <div style={{ padding: "30px" }}>
+      <h1>Popular movies</h1>
+      <Splide
+        options={{
+          perPage: 5, // Number of slides per page
+          breakpoints: {
+            1024: { perPage: 2 }, // Adjust perPage for tablet
+            464: { perPage: 1 }, // Adjust perPage for mobile
+          },
+          gap: "20px", // Gap between slides
+          rewind: true,
+          // Allow rewinding when reaching the end
+        }}
+        className="custom-splide"
+      >
+        {popular.map((value) => (
+          <SplideSlide key={value.id}>
+            {/* <Badge.Ribbon text={value.original_language} color="red"> */}
             <Card
-              key={value.id}
               style={{
-                width: 260,
-                marginLeft: "20px", // Add margin for spacing between cards
-                marginBottom: "20px", // Add margin for spacing between rows
+                width: 280,
               }}
-              cover={<img alt="example" src={value.picture} />}
+              cover={
+                <img
+                  alt={value.title}
+                  src={`https://image.tmdb.org/t/p/w500${value.poster_path}`}
+                />
+              }
             >
-              <Meta title={value.name} description={value.releaseDate} />
+              <Meta
+                title={value.title}
+                description={`Release Date: ${value.release_date}`}
+              />
+
               <div
                 style={{
-                  position: "absolute", // Position the circle inside the card
-                  bottom: "30px", // Adjust top position of the circle
-                  right: "10px", // Adjust right position of the circle
-                  width: "40px", // Set width of the circle
-                  height: "40px", // Set height of the circle
-                  borderRadius: "50%", // Make it a circle by setting border radius to 50%
-                  backgroundColor: "#00cc00", // Choose a background color for the circle
-                  color: "white", // Set text color
-                  display: "flex", // Use flex layout for centering content
-                  justifyContent: "center", // Center horizontally
-                  alignItems: "center", // Center vertically
-                  fontWeight: "bold", // Add bold font weight
-                  fontSize: "18px", // Adjust font size
+                  position: "absolute",
+                  bottom: "30px",
+                  right: "10px",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  backgroundColor: "#00cc00",
+                  color: "white",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontWeight: "bold",
+                  fontSize: "18px",
                 }}
               >
-                 {value.rating}
+                {value.vote_average}
               </div>
             </Card>
-          </Badge.Ribbon>
-          
+            {/* </Badge.Ribbon> */}
+          </SplideSlide>
         ))}
-      </div>
+      </Splide>
     </div>
   );
 };

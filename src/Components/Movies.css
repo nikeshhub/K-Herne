@@ -1,0 +1,11 @@
+.movie-container {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap to the next line */
+  justify-content: flex-start; /* Adjust as needed to control alignment */
+}
+
+.movie-card {
+  margin: 16px; /* Add margin between cards */
+  flex: 0 0 calc(20% - 32px); /* Adjust the width and margin as needed for 5 cards per row */
+}
