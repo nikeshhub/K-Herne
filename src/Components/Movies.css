@@ -2,19 +2,17 @@
 .movie-container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row-reverse; /* Reverse the order of the children, pushing pagination to the right */
+
   justify-content: space-between;
 }
 
 /* Styles for movie cards in desktop layout */
 .desktop-layout {
   padding: 30px;
-  flex-basis: calc(25% - 16px); /* Four cards per row with gap */
+  flex-basis: calc(25% - 16px); 
   margin-bottom: 16px;
 }
-
-/* Styles for movie cards in mobile layout (if needed) */
-
-
 
 /* Mobile layout styles */
 @media (max-width: 767px) {
@@ -47,4 +45,97 @@
   .mobile-info {
     flex: 2;
   }
+}
+
+.ant-pagination {
+  background-color: transparent !important;
+  margin-bottom: 10px;
+  margin-right: 10px; /* Set the background color to transparent */
+}
+
+.ant-pagination-item {
+  border: 1px solid white !important; /* Add a white border around each pagination item */
+  /* background-color: white !important;  */
+
+}
+
+.ant-pagination-item-ellipsis{
+  color: white !important;
+}
+.ant-pagination-item-link {
+  color: white !important; /* Set the text color to white */
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-pagination .ant-pagination-item a {
+  color: white !important; /* Set the text color to white */
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-select-single .ant-select-selector {
+  background-color: transparent !important;
+  color: white !important; /* Set the text color to white */
+}
+
+
+.ant-pagination-item:hover {
+  background-color: #1890ff !important; /* Change the background color on hover */
+  border-color: #1890ff !important; /* Change the border color on hover */
+  color: white !important; /* Set the text color on hover to white */
+}
+
+.ant-pagination-item-active {
+  background-color: #1890ff !important; /* Change the background color for the active page */
+  border-color: #1890ff !important; /* Change the border color for the active page */
+  color: white !important; /* Set the text color for the active page to white */
+}
+
+/* Inside Movies.css */
+
+/* Search and sort container styles */
+.search-sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Add some spacing between the container and movie cards */
+}
+
+/* Search input styles */
+.ant-input-search {
+  width: 100%;
+  max-width: 300px; /* Adjust the maximum width of the search input */
+}
+
+/* Select styles */
+.ant-select {
+  width: 100%;
+  max-width: 150px; /* Adjust the maximum width of the select dropdown */
+}
+
+/* Option styles */
+.ant-select-item-option {
+  color: black; /* Change the text color of options */
+  background-color: white; /* Change the background color of options */
+}
+
+/* Active Option styles */
+.ant-select-item-option-active {
+  color: white; /* Change the text color of active options */
+  background-color: #1890ff; /* Change the background color of active options */
+}
+
+/* Hovered Option styles */
+.ant-select-item-option:hover {
+  background-color: #f0f0f0; /* Change the background color of options on hover */
+}
+
+/* Search button styles (optional) */
+.ant-input-search-button {
+  background-color: #1890ff; /* Change the background color of the search button */
+  border-color: #1890ff; /* Change the border color of the search button */
+  color: white; /* Change the text color of the search button */
+}
+
+/* Search button hover styles (optional) */
+.ant-input-search-button:hover {
+  background-color: #40a9ff; /* Change the background color of the search button on hover */
+  border-color: #40a9ff; /* Change the border color of the search button on hover */
 }
