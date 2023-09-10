@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Row, Col } from "antd";
 import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
 import "./Footer.css";
-import { NavLink } from "react-router-dom";
+
 
 const { Footer } = Layout;
 
