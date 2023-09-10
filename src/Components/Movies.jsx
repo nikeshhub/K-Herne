@@ -35,7 +35,7 @@ const Movies = () => {
 
   useEffect(() => {
     getMovies();
-  }, [currentPage, searchQuery, sortOption]);
+  }, [currentPage, searchQuery, sortOption, getMovies]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);

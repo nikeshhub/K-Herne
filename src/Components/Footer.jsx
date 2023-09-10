@@ -1,13 +1,8 @@
 import React from "react";
 import { Layout, Row, Col } from "antd";
-import {
-  FacebookOutlined,
-  TwitterOutlined,
-  InstagramOutlined,
-  LinkedinOutlined,
-  GithubOutlined,
-} from "@ant-design/icons";
+import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
 import "./Footer.css";
+import { NavLink } from "react-router-dom";
 
 const { Footer } = Layout;
 
@@ -51,15 +46,12 @@ function AppFooter() {
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <h4>Connect with the developer</h4>
             <div className="social-icons">
-              <a href="#">
+              <NavLink to="https://github.com/nikeshhub">
                 <GithubOutlined />
-              </a>
-              <a href="#">
+              </NavLink>
+              <NavLink to="https://github.com/nikeshhub">
                 <LinkedinOutlined />
-              </a>
-              <a href="#">
-                <InstagramOutlined />
-              </a>
+              </NavLink>
             </div>
           </Col>
         </Row>
