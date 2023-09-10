@@ -1,6 +1,4 @@
-
-
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Card, Rate, Typography, Pagination, Input, Select } from "antd";
 import axios from "axios";
 import "./Movies.css";
@@ -20,7 +18,7 @@ const Movies = () => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
 
-  const getMovies = async () => {
+  const getMovies = useCallback(async () => {
     try {
       const response = await axios({
         url: `https://api.themoviedb.org/3/discover/movie?api_key=7075fe97f28375fc950eee9bfe2a0364&page=${currentPage}&sort_by=${sortOption}&query=${searchQuery}`,
@@ -31,11 +29,11 @@ const Movies = () => {
     } catch (error) {
       console.log("Error fetching data", error);
     }
-  };
+  }, [currentPage, searchQuery, sortOption]);
 
   useEffect(() => {
     getMovies();
-  }, [currentPage, searchQuery, sortOption, getMovies]);
+  }, [getMovies]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -61,7 +59,7 @@ const Movies = () => {
           defaultValue="popularity.desc"
           style={{ width: 160 }}
           onChange={handleSortChange}
-          placeholder= "Sort"
+          placeholder="Sort"
         >
           <Option value="popularity.desc">Popular Desc</Option>
           <Option value="popularity.asc">Popular Asc</Option>

@@ -46,12 +46,32 @@ function AppFooter() {
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <h4>Connect with the developer</h4>
             <div className="social-icons">
-              <NavLink to="https://github.com/nikeshhub">
+              <button
+                onClick={() =>
+                  window.open("https://github.com/nikeshhub", "_blank")
+                }
+                style={{
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                  border: "none",
+                  background: "none",
+                }}
+              >
                 <GithubOutlined />
-              </NavLink>
-              <NavLink to="https://github.com/nikeshhub">
+              </button>
+              <button
+                onClick={() =>
+                  window.open("https://linkedin.com/in/nikeshhub", "_blank")
+                }
+                style={{
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                  border: "none",
+                  background: "none",
+                }}
+              >
                 <LinkedinOutlined />
-              </NavLink>
+              </button>
             </div>
           </Col>
         </Row>
