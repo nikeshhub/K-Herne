@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Row, Col } from "antd";
 import { LinkedinOutlined, GithubOutlined } from "@ant-design/icons";
 import "./Footer.css";
-
+import { NavLink } from "react-router-dom";
 
 const { Footer } = Layout;
 
@@ -30,16 +30,13 @@ function AppFooter() {
             <h4>Quick Links</h4>
             <ul className="footer-menu">
               <li>
-                <a href="#">Home</a>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <a href="#">Movies</a>
+                <NavLink to="/movies">Movies</NavLink>
               </li>
               <li>
-                <a href="#">TV Shows</a>
-              </li>
-              <li>
-                <a href="#">Contact</a>
+                <NavLink to="/tv-shows">TV Shows</NavLink>
               </li>
             </ul>
           </Col>
