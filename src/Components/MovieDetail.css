@@ -1,30 +1,29 @@
 /* Styles for the main container */
 .movie-detail-container {
+  position: relative;
   /* background-color: #333; Background color for the movie detail container */
   color: white; /* Text color for the content inside the container */
   /* padding: 20px; */
 }
-.movie-backdrop::before {
-  content: "";
+
+/* Background image for the backdrop */
+.movie-backdrop {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("https://image.tmdb.org/t/p/original/${images[0]?.file_path}");
   background-size: cover;
   background-position: center;
-  filter: blur(
-    5px
-  ); /* Add the blur effect with the desired radius (e.g., 5px) */
-  z-index: -1; /* Ensure it's behind the content */
+  opacity: 0.6; /* Adjust the opacity as needed */
+  z-index: 0;
 }
-/* Background image for the backdrop */
-.movie-backdrop {
-  background-size: cover;
-  background-position: center;
-  min-height: 300px;
-  padding: 20px; /* Adjust as needed */
+
+.movie-content {
+  position: relative;
+  padding: 20px;
+  /* Other styles for the .movie-content class go here */
 }
 
 /* Style for the movie poster image */
@@ -143,6 +142,7 @@
 
 @media screen and (max-width: 768px) {
   /* Adjust styles for smaller screens here */
+
   .movie-title {
     font-size: 20px;
   }

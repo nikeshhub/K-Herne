@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Card} from "antd";
+import { Card } from "antd";
 import { Splide, SplideSlide } from "@splidejs/react-splide"; // Import Splide components
 import axios from "axios";
 import "@splidejs/react-splide/css/skyblue";
-
+import { useNavigate } from "react-router-dom";
 
 const { Meta } = Card;
 
 const TrendingHome = () => {
   const [popular, setPopular] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const apiUrl =
@@ -23,6 +24,9 @@ const TrendingHome = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
+  const handleCardClick = (movieId) => {
+    navigate(`/movies/${movieId}`);
+  };
 
   return (
     <div style={{ padding: "30px" }}>
@@ -43,43 +47,45 @@ const TrendingHome = () => {
       >
         {popular.map((value) => (
           <SplideSlide key={value.id}>
-
-              <Card
-                style={{
-                  width: 315,
-                }}
-                cover={
-                  <img
-                    alt={value.title}
-                    src={`https://image.tmdb.org/t/p/w500${value.poster_path}`}
-                  />
-                }
-              >
-                <Meta
-                  title={value.title}
-                  description={`Release Date: ${value.release_date}`}
+            <Card
+              hoverable
+              style={{
+                width: 315,
+              }}
+              cover={
+                <img
+                  alt={value.title}
+                  src={`https://image.tmdb.org/t/p/w500${value.poster_path}`}
                 />
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "30px",
-                    right: "10px",
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    backgroundColor: "#00cc00",
-                    color: "white",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontWeight: "bold",
-                    fontSize: "18px",
-                  }}
-                >
-                  {value.vote_average.toFixed(1)}
-                </div>
-              </Card>
-
+              }
+              onClick={() => {
+                handleCardClick(value.id);
+              }}
+            >
+              <Meta
+                title={value.title}
+                description={`Release Date: ${value.release_date}`}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "30px",
+                  right: "10px",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  backgroundColor: "#00cc00",
+                  color: "white",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                }}
+              >
+                {value.vote_average.toFixed(1)}
+              </div>
+            </Card>
           </SplideSlide>
         ))}
       </Splide>

@@ -95,48 +95,45 @@ const MovieDetailPage = () => {
           style={{
             backgroundImage: `url('https://image.tmdb.org/t/p/original/${images[0]?.file_path}')`,
           }}
-        >
-          <div className="movie-content">
-            <Row gutter={[16, 16]}>
-              <Col xs={24} sm={12} md={8}>
-                <img
-                  alt={movie.title}
-                  src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                  className="movie-poster"
-                />
-              </Col>
-              <Col xs={24} sm={12} md={16}>
-                <Title
-                  level={1}
-                  className="movie-title"
-                  style={{ color: "white" }}
-                >
-                  {movie.title}
-                </Title>
-                <Title level={3} style={{ color: "white" }}>
-                  Overview
-                </Title>
-                <Paragraph className="movie-overview">
-                  {movie.overview}
-                </Paragraph>
-                <Title style={{ color: "white" }} level={3}>
-                  Director
-                </Title>
-                <Paragraph className="movie-director">
-                  Nikesh Sapkota {/* Replace with the director's name */}
-                </Paragraph>
-                <Title style={{ color: "white" }} level={3}>
-                  Screenplay
-                </Title>
-                <Paragraph className="movie-screenplay">
-                  Nikesh Sapkota{" "}
-                  {/* Replace with the screenplay writer's name */}
-                </Paragraph>
-              </Col>
-            </Row>
-          </div>
+        ></div>
+        <div className="movie-content">
+          <Row gutter={[16, 16]}>
+            <Col xs={24} sm={12} md={8}>
+              <img
+                alt={movie.title}
+                src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                className="movie-poster"
+              />
+            </Col>
+            <Col xs={24} sm={12} md={16}>
+              <Title
+                level={1}
+                className="movie-title"
+                style={{ color: "white" }}
+              >
+                {movie.title}
+              </Title>
+              <Title level={3} style={{ color: "white" }}>
+                Overview
+              </Title>
+              <Paragraph className="movie-overview">{movie.overview}</Paragraph>
+              <Title style={{ color: "white" }} level={3}>
+                Director
+              </Title>
+              <Paragraph className="movie-director">
+                Nikesh Sapkota {/* Replace with the director's name */}
+              </Paragraph>
+              <Title style={{ color: "white" }} level={3}>
+                Screenplay
+              </Title>
+              <Paragraph className="movie-screenplay">
+                Nikesh Sapkota {/* Replace with the screenplay writer's name */}
+              </Paragraph>
+            </Col>
+          </Row>
         </div>
       </div>
+
       <div
         style={{
           margin: "20px",
