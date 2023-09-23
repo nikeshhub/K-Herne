@@ -4,11 +4,13 @@ import { Splide, SplideSlide } from "@splidejs/react-splide"; // Import Splide c
 import axios from "axios";
 import "@splidejs/react-splide/css/skyblue";
 import "./PopularHome.css";
+import { useNavigate } from "react-router-dom";
 
 const { Meta } = Card;
 
 const PopularHome = () => {
   const [popular, setPopular] = useState([]);
+  const navigate = useNavigate();
 
   const getMovies = async () => {
     try {
@@ -26,19 +28,9 @@ const PopularHome = () => {
     getMovies();
   }, []);
 
-  // useEffect(() => {
-  //   const apiUrl =
-  //     "https://api.themoviedb.org/3/movie/popular?api_key=7075fe97f28375fc950eee9bfe2a0364";
-
-  //   axios
-  //     .get(apiUrl)
-  //     .then((response) => {
-  //       setPopular(response.data.results);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //     });
-  // }, []);
+  const handleCardClick = (movieId) => {
+    navigate(`/movies/${movieId}`);
+  };
 
   return (
     <div style={{ padding: "30px" }}>
@@ -61,6 +53,7 @@ const PopularHome = () => {
         {popular.map((value) => (
           <SplideSlide key={value.id}>
             <Card
+              hoverable
               style={{
                 width: 315,
               }}
@@ -70,6 +63,9 @@ const PopularHome = () => {
                   src={`https://image.tmdb.org/t/p/w500${value.poster_path}`}
                 />
               }
+              onClick={() => {
+                handleCardClick(value.id);
+              }}
             >
               <Meta
                 title={value.title}

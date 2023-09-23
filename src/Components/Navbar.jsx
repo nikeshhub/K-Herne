@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <Layout className="layout">
-      <Header style={{ padding: -1 }}>
+      <Header style={{ padding: -1, position: "sticky" }}>
         <Row justify="space-between">
           <Col xs={20} sm={20} md={4}>
             <NavLink to="/">

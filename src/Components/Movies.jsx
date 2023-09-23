@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Card, Rate, Typography, Pagination, Input, Select } from "antd";
 import axios from "axios";
 import "./Movies.css";
+import { useNavigate } from "react-router-dom";
 
 const { Meta } = Card;
 const { Text } = Typography;
@@ -14,6 +15,7 @@ const Movies = () => {
   const [totalResults, setTotalResults] = useState(0);
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
   const [sortOption, setSortOption] = useState("popularity.desc"); // State for sorting
+  const navigate = useNavigate();
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
@@ -46,6 +48,9 @@ const Movies = () => {
   const handleSortChange = (value) => {
     setSortOption(value);
   };
+  const handleCardClick = (movieId) => {
+    navigate(`/movies/${movieId}`);
+  };
 
   return (
     <div className="movie-container">
@@ -73,7 +78,10 @@ const Movies = () => {
         <div key={i} className="movie-card">
           {/* Conditionally render the layout based on screen size */}
           {window.innerWidth <= 767 ? (
-            <div className="mobile-layout">
+            <div
+              className="mobile-layout"
+              onClick={() => handleCardClick(value.id)}
+            >
               <div className="mobile-image">
                 <img
                   alt={value.title}
@@ -111,6 +119,7 @@ const Movies = () => {
                     src={`https://image.tmdb.org/t/p/w500${value.poster_path}`}
                   />
                 }
+                onClick={() => handleCardClick(value.id)}
               >
                 <Meta title={value.title} />
               </Card>

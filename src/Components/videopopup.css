@@ -1,0 +1,50 @@
+/* Video Popup Container */
+.video-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure it appears above other content */
+}
+
+/* Video Content */
+.video-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  width: 80%; /* Adjust the width as needed */
+  max-width: 800px; /* Optionally, set a max-width to prevent it from getting too wide */
+  text-align: center; /* Center the content horizontally */
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.close-button:hover {
+  background-color: #ccc;
+}
+
+/* Responsive Styling (optional) */
+@media (max-width: 768px) {
+  /* Add responsive styles here, if needed */
+  .video-content {
+    max-width: 80%;
+  }
+}

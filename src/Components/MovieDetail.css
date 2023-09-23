@@ -1,0 +1,181 @@
+/* Styles for the main container */
+.movie-detail-container {
+  /* background-color: #333; Background color for the movie detail container */
+  color: white; /* Text color for the content inside the container */
+  /* padding: 20px; */
+}
+.movie-backdrop::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://image.tmdb.org/t/p/original/${images[0]?.file_path}");
+  background-size: cover;
+  background-position: center;
+  filter: blur(
+    5px
+  ); /* Add the blur effect with the desired radius (e.g., 5px) */
+  z-index: -1; /* Ensure it's behind the content */
+}
+/* Background image for the backdrop */
+.movie-backdrop {
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  padding: 20px; /* Adjust as needed */
+}
+
+/* Style for the movie poster image */
+.movie-poster {
+  padding: 10px;
+  max-width: 100%;
+  border-radius: 10%;
+}
+
+/* Style for movie title */
+.movie-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style for movie overview */
+.movie-overview {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color: white;
+}
+
+/* Style for director and screenplay */
+.movie-director,
+.movie-screenplay {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+/* Style for cast card container */
+.cast-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap between actor cards */
+}
+
+/* Style for individual actor cards */
+.actor-card {
+  background-color: #444; /* Background color for actor cards */
+  color: white; /* Text color for actor cards */
+  padding: 10px;
+  width: 190px;
+  height: 280px; /* Adjust as needed */
+}
+
+/* Style for actor profile image */
+.actor-profile {
+  width: 130px; /* Adjust the width as needed */
+  height: 130px; /* Equal height to create a circular image */
+  border-radius: 50%; /* Make the profile image round */
+  object-fit: cover; /* Maintain aspect ratio and cover the entire circle */
+}
+
+/* Style for actor name */
+.actor-name {
+  font-size: 14px;
+  margin-top: 10px;
+  color: white;
+}
+
+/* Style for actor character */
+.actor-character {
+  font-size: 12px;
+  color: white;
+}
+
+/* Style for video cards container */
+.video-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px; /* Adjust the gap between video cards */
+}
+
+/* Style for individual video cards */
+.video-card {
+  background-color: #444; /* Background color for video cards */
+  color: white; /* Text color for video cards */
+  padding: 10px;
+  width: 200px;
+  height: 230px; /* Adjust as needed */
+  cursor: pointer;
+}
+
+/* Style for video thumbnails */
+.video-thumbnail {
+  max-width: 100%;
+}
+
+/* Style for video titles */
+.video-title {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Style for the video popup (you may need to customize this) */
+.video-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the video iframe inside the popup (you may need to customize this) */
+.video-iframe {
+  width: 80%;
+  height: 60vh;
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjust styles for smaller screens here */
+  .movie-title {
+    font-size: 20px;
+  }
+
+  .movie-overview {
+    font-size: 14px;
+  }
+
+  .movie-director,
+  .movie-screenplay {
+    font-size: 16px;
+  }
+
+  .actor-profile {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Equal height to create a circular image */
+  }
+
+  .actor-card,
+  .video-card {
+    width: 160px;
+    height: 250px;
+  }
+
+  .actor-name {
+    font-size: 14px;
+  }
+
+  .actor-character {
+    font-size: 12px;
+  }
+
+  .video-title {
+    font-size: 14px;
+  }
+}
