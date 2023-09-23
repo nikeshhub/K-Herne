@@ -1,8 +1,9 @@
 // MovieDetail.js
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Card, Row, Col, Typography } from "antd";
+import { Card, Row, Col, Typography, Button, Space, Rate } from "antd";
+import { RightOutlined } from "@ant-design/icons";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/skyblue";
 import "./MovieDetail.css";
@@ -12,9 +13,12 @@ const { Title, Paragraph } = Typography;
 const MovieDetailPage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
+  const [director, setDirector] = useState("");
+  const [screenplay, setScreenplay] = useState("");
   const [cast, setCast] = useState([]);
   const [videos, setVideos] = useState([]);
   const [images, setImages] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -39,6 +43,24 @@ const MovieDetailPage = () => {
             },
           }
         );
+        const directorInfo = castResponse.data.crew.find(
+          (crewMember) => crewMember.job === "Director"
+        );
+
+        if (directorInfo) {
+          setDirector(directorInfo.name);
+        } else {
+          setDirector("Director information not found");
+        }
+        const screenplayInfo = castResponse.data.crew.find(
+          (crewMember) => crewMember.job === "Screenplay"
+        );
+
+        if (screenplayInfo) {
+          setScreenplay(screenplayInfo.name);
+        } else {
+          setScreenplay("screenplay information not found");
+        }
 
         // Fetch videos (trailers)
         const videosResponse = await axios.get(
@@ -113,22 +135,28 @@ const MovieDetailPage = () => {
               >
                 {movie.title}
               </Title>
+              <Rate allowHalf value={movie.vote_average / 2} />
               <Title level={3} style={{ color: "white" }}>
                 Overview
               </Title>
               <Paragraph className="movie-overview">{movie.overview}</Paragraph>
-              <Title style={{ color: "white" }} level={3}>
-                Director
-              </Title>
-              <Paragraph className="movie-director">
-                Nikesh Sapkota {/* Replace with the director's name */}
-              </Paragraph>
-              <Title style={{ color: "white" }} level={3}>
-                Screenplay
-              </Title>
-              <Paragraph className="movie-screenplay">
-                Nikesh Sapkota {/* Replace with the screenplay writer's name */}
-              </Paragraph>
+              <Space size="large">
+                <div>
+                  <Title style={{ color: "white" }} level={3}>
+                    Director
+                  </Title>
+                  <Paragraph className="movie-director">{director}</Paragraph>
+                </div>
+                <div>
+                  <Title style={{ color: "white" }} level={3}>
+                    Screenplay
+                  </Title>
+
+                  <Paragraph className="movie-screenplay">
+                    {screenplay}
+                  </Paragraph>
+                </div>
+              </Space>
             </Col>
           </Row>
         </div>
@@ -246,6 +274,16 @@ const MovieDetailPage = () => {
       {showVideoPopup && (
         <VideoPopup video={selectedVideo} onClose={handleCloseVideoPopup} />
       )}
+      <div style={{ textAlign: "center", margin: "40px" }}>
+        <Button
+          onClick={() => {
+            navigate("/movies");
+          }}
+          type="primary"
+        >
+          Browse all movies <RightOutlined />
+        </Button>
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const CarouselHome = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [id, setId] = useState();
+
   const navigate = useNavigate();
   const carouselSettings = {
     autoplay: true,
@@ -29,10 +29,7 @@ const CarouselHome = () => {
       .then((response) => response.json())
       .then((data) => {
         // Extract the backdrop from the API response
-        const backdrop = data.results.map((result) => result.backdrop_path);
-        const id = data.results.map((result) => result.id);
-        setTrendingMovies(backdrop);
-        setId(id);
+        setTrendingMovies(data.results);
       })
       .catch((error) => {
         console.error("Error fetching data from TMDB API:", error);
@@ -45,13 +42,13 @@ const CarouselHome = () => {
   return (
     <div style={{ padding: "30px 0" }}>
       <Carousel {...carouselSettings}>
-        {trendingMovies.map((backdrop, index) => (
+        {trendingMovies.map((value, index) => (
           <div key={index} style={{ overflow: "hidden", borderRadius: "2.5%" }}>
             <img
               onClick={() => {
-                handleCardClick(id);
+                handleCardClick(value.id);
               }}
-              src={`https://image.tmdb.org/t/p/original${backdrop}`}
+              src={`https://image.tmdb.org/t/p/original${value.backdrop_path}`}
               alt=""
               style={{
                 width: "100%",
