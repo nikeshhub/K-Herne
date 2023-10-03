@@ -52,7 +52,7 @@ function AppFooter() {
                   cursor: "pointer",
                   border: "none",
                   background: "none",
-                  color:"white"
+                  color:'#05b4f7'
                 }}
               >
                 <GithubOutlined />
@@ -66,7 +66,7 @@ function AppFooter() {
                   cursor: "pointer",
                   border: "none",
                   background: "none",
-                  color:'white'
+                  color:'#05b4f7'
                 }}
               >
                 <LinkedinOutlined />

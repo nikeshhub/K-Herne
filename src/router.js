@@ -6,6 +6,7 @@ import MovieGenreTab from "./Components/Movies";
 
 import AppFooter from "./Components/Footer";
 import MovieDetailPage from "./Components/MovieDetailPage";
+import TVSeriesPage from "./Components/TVSeriesPage";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/movies" element={<MovieGenreTab />}></Route>
         <Route path="/movies/:id" element={<MovieDetailPage />}></Route>
+        <Route path="/tv-series" element={<TVSeriesPage />}></Route>
       </Routes>
       <AppFooter />
     </div>

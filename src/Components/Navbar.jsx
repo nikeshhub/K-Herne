@@ -74,7 +74,14 @@ const Navbar = () => {
           </Col>
 
           <Col xs={4} sm={4} md={0}>
-            <Button type="primary" onClick={showDrawer}>
+            <Button
+              style={{
+                backgroundColor: "#05b4f7",
+                color: "white",
+                border: "none",
+              }}
+              onClick={showDrawer}
+            >
               <MenuOutlined />
             </Button>
           </Col>

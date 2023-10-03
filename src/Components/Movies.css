@@ -1,141 +1,101 @@
-/* Inside Movies.css */
+/* Movies.css */
 .movie-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse; /* Reverse the order of the children, pushing pagination to the right */
-
-  justify-content: space-between;
-}
-
-/* Styles for movie cards in desktop layout */
-.desktop-layout {
   padding: 30px;
-  flex-basis: calc(25% - 16px); 
-  margin-bottom: 16px;
+  background-color: #141414;
+  color: #ffffff;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
-/* Mobile layout styles */
-@media (max-width: 767px) {
-  .movie-card {
-    flex-basis: 100%; 
-    margin: 10px;
-  }
-  .mobile-layout {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: #212422;
-    border-radius: 5%;
-    padding: 5px;
-
-    /* width: 315px;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
-  }
-
-  .mobile-image {
-    flex: 1;
-    margin-right: 10px;
-  }
-  .mobile-image img {
-    max-width: 150px;
-    border-radius: 5%;
-  }
-  .mobile-info {
-    flex: 2;
-  }
-}
-
-.ant-pagination {
-  background-color: transparent !important;
-  margin-bottom: 10px;
-  margin-right: 10px; /* Set the background color to transparent */
-}
-
-.ant-pagination-item {
-  border: 1px solid white !important; /* Add a white border around each pagination item */
-  /* background-color: white !important;  */
-
-}
-
-.ant-pagination-item-ellipsis{
-  color: white !important;
-}
-.ant-pagination-item-link {
-  color: white !important; /* Set the text color to white */
-}
-
-:where(.css-dev-only-do-not-override-17a39f8).ant-pagination .ant-pagination-item a {
-  color: white !important; /* Set the text color to white */
-}
-
-:where(.css-dev-only-do-not-override-17a39f8).ant-select-single .ant-select-selector {
-  background-color: transparent !important;
-  color: white !important; /* Set the text color to white */
-}
-
-
-.ant-pagination-item:hover {
-  background-color: #1890ff !important; /* Change the background color on hover */
-  border-color: #1890ff !important; /* Change the border color on hover */
-  color: white !important; /* Set the text color on hover to white */
-}
-
-.ant-pagination-item-active {
-  background-color: #1890ff !important; /* Change the background color for the active page */
-  border-color: #1890ff !important; /* Change the border color for the active page */
-  color: white !important; /* Set the text color for the active page to white */
-}
-
-/* Inside Movies.css */
-
-/* Search and sort container styles */
 .search-sort-container {
   display: flex;
   align-items: center;
+  margin-bottom: 30px;
   justify-content: space-between;
-  margin-bottom: 20px; /* Add some spacing between the container and movie cards */
 }
 
-/* Search input styles */
-.ant-input-search {
+.movieslist {
+  background-color: #1d1d1d;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 1%;
+}
+
+.movie-card {
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-layout {
+  display: flex;
+}
+
+.mobile-image img {
+  width: 150px;
+  height: auto;
+  margin-right: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-info {
+  flex: 1;
+}
+
+/* Pagination styles */
+.ant-pagination {
+  margin-top: 30px;
+}
+
+/* Input and Select styles */
+.ant-input {
   width: 100%;
-  max-width: 300px; /* Adjust the maximum width of the search input */
+
+  font-size: 16px;
+
+  margin-bottom: 20px;
+  color: #333;
 }
 
-/* Select styles */
 .ant-select {
   width: 100%;
-  max-width: 150px; /* Adjust the maximum width of the select dropdown */
+  font-size: 16px;
+  color: #333;
 }
 
-/* Option styles */
-.ant-select-item-option {
-  color: black; /* Change the text color of options */
-  background-color: white; /* Change the background color of options */
+/* Card styles */
+.ant-card {
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Active Option styles */
-.ant-select-item-option-active {
-  color: white; /* Change the text color of active options */
-  background-color: #1890ff; /* Change the background color of active options */
+.ant-card-meta-title,
+.ant-rate {
+  color: #ffffff;
+  font-weight: bold;
 }
 
-/* Hovered Option styles */
-.ant-select-item-option:hover {
-  background-color: #f0f0f0; /* Change the background color of options on hover */
+/* Text styles */
+.ant-typography strong {
+  color: #ffffff;
 }
 
-/* Search button styles (optional) */
-.ant-input-search-button {
-  background-color: #1890ff; /* Change the background color of the search button */
-  border-color: #1890ff; /* Change the border color of the search button */
-  color: white; /* Change the text color of the search button */
-}
+@media (max-width: 767px) {
+  .movieslist {
+    margin: 0;
+  }
 
-/* Search button hover styles (optional) */
-.ant-input-search-button:hover {
-  background-color: #40a9ff; /* Change the background color of the search button on hover */
-  border-color: #40a9ff; /* Change the border color of the search button on hover */
+  .mobile-info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

@@ -176,7 +176,9 @@ const MovieDetailPage = () => {
           </Title>
         </div>
         <div>
-          <Link>See all</Link>
+          <Link style={{ textDecoration: "none", color: "#05b4f7" }}>
+            See all
+          </Link>
         </div>
       </div>
       <div style={{ margin: "20px" }}>
@@ -187,8 +189,11 @@ const MovieDetailPage = () => {
             rewind: true,
             pagination: false,
             breakpoints: {
-              1024: { perPage: 2 }, // Adjust perPage for tablet
-              464: { perPage: 2 },
+              1250: { perPage: 5 },
+              1024: { perPage: 4 },
+              810: { perPage: 3 },
+
+              540: { perPage: 2 },
             },
           }}
         >
@@ -230,7 +235,7 @@ const MovieDetailPage = () => {
           </Title>
         </div>
         <div>
-          <Link style={{ textDecoration: "none", color: "white" }}>
+          <Link style={{ textDecoration: "none", color: "#05b4f7" }}>
             See all
           </Link>
         </div>
@@ -279,7 +284,7 @@ const MovieDetailPage = () => {
           onClick={() => {
             navigate("/movies");
           }}
-          type="primary"
+          style={{ backgroundColor: "#05b4f7", color: "white", border: "none" }}
         >
           Browse all movies <RightOutlined />
         </Button>

@@ -34,11 +34,12 @@ const PopularHome = () => {
 
   return (
     <div style={{ padding: "30px" }}>
-      <h1>Popular movies</h1>
+      <h1 style={{color:"#05b4f7"}}>Popular movies</h1>
       <Splide
         options={{
           perPage: 4, // Number of slides per page
           breakpoints: {
+            1280: {perPage: 3},
             1024: { perPage: 2 }, // Adjust perPage for tablet
             464: { perPage: 1 }, // Adjust perPage for mobile
           },
